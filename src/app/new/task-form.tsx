@@ -17,37 +17,15 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-// import { createTask, updateTask } from "@/actions/tasks-actions";
-// import { Task } from "@prisma/client";
 import Link from "next/link";
 import { createPrismaClient } from "@/lib/prisma";
-// export function TaskForm({ task }: { task?: Task }) {
+import { redirect } from "next/navigation";
+import { createTask } from "../actions/task-actions";
+
 export function TaskForm() {
 
+
 //   const functionAction = task?.id   ? updateTask : createTask;
-async function  createTask(formData: FormData) {
-    "use server"
-    const prisma = createPrismaClient();
-
-    const name = formData.get("name");
-    const description = formData.get("description");
-    const priority = formData.get("priority");
-    console.log("Create Task", {
-        name,
-        description,
-        priority
-    });
-
-    const newTask = await prisma.task.create({
-        data: {
-            name: name as string,
-            description: description as string,
-            priority: priority as string
-        }
-    });
-
-    console.log("New Task", newTask);
-}
 
 const task = {id: 1, name: "Task 1", description: "Description of Task 1", priority: "low"};
 
